@@ -8,13 +8,7 @@ name = [ ]
 #concatenating two variables
 full_name = first_name + ' ' + last_name
 
-#using split function
-name = full_name.split(' ')
-
 #using reverse function
-reverse_order = name[::-1]
+reverse_order = full_name[::-1]
 
-#using join function
-full_name = ' '.join(reverse_order)
-
-print(full_name)
+print(reverse_order)
