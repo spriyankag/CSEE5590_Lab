@@ -31,19 +31,19 @@ with io.open(r'C:\Users\mural\OneDrive\Desktop\ICP-7.txt', "r", encoding="utf-8"
     for i in fo.readlines():
         print("-----word tokenization---------")
         tokenization = word_tokenize(i)
-        # print(tokenization)
+        print(tokenization)
         print("-----pos tag---------")
-        # print(pos_tag(i))
+        print(pos_tag(i))
         print("-----trigram---------")
-        # print(Counter(ngrams(word_tokenize(i), 3)))
+        print(Counter(ngrams(word_tokenize(i), 3)))
         print("-----Name Entity Recognition---------")
-        # print(ne_chunk(pos_tag(wordpunct_tokenize(i))))
+        print(ne_chunk(pos_tag(wordpunct_tokenize(i))))
         print("-----Stemmer---------")
         stemmer = LancasterStemmer()
         print("-----Lemmetization---------")
         lemmetizer = WordNetLemmatizer()
         for data in tokenization:
-            #print("Lemmetizer for word: ", data,": " ,lemmetizer.lemmatize(data))
+            print("Lemmetizer for word: ", data,": " ,lemmetizer.lemmatize(data))
             print("Stemmer for word: ", data, ": ", stemmer.stem(data))
 
 
