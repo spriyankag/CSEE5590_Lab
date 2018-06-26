@@ -2,7 +2,7 @@ import requests
 import io
 from bs4 import BeautifulSoup
 from nltk.tokenize import  word_tokenize, sent_tokenize,wordpunct_tokenize
-from nltk.stem import PorterStemmer, LancasterStemmer
+from nltk.stem import PorterStemmer, LancasterStemmer, SnowballStemmer
 from nltk import pos_tag, ne_chunk
 from nltk.util import  ngrams
 from collections import  Counter
@@ -33,17 +33,21 @@ with io.open(r'C:\Users\mural\OneDrive\Desktop\ICP-7.txt', "r", encoding="utf-8"
         tokenization = word_tokenize(i)
         print(tokenization)
         print("-----pos tag---------")
-        print(pos_tag(i))
+        print(pos_tag(word_tokenize(i)))
         print("-----trigram---------")
         print(Counter(ngrams(word_tokenize(i), 3)))
         print("-----Name Entity Recognition---------")
         print(ne_chunk(pos_tag(wordpunct_tokenize(i))))
         print("-----Stemmer---------")
         stemmer = LancasterStemmer()
+        stemmer1 = PorterStemmer()
+        stemmer2 = SnowballStemmer('english')
         print("-----Lemmetization---------")
         lemmetizer = WordNetLemmatizer()
         for data in tokenization:
             print("Lemmetizer for word: ", data,": " ,lemmetizer.lemmatize(data))
-            print("Stemmer for word: ", data, ": ", stemmer.stem(data))
+            print("Lancaster Stemming for word: ", data, ": ", stemmer.stem(data))
+            print("Porter Stemming for word: ", data, ": ", stemmer1.stem(data))
+            print("Snowball Stemming for word: ", data, ": ", stemmer2.stem(data))
 
 
