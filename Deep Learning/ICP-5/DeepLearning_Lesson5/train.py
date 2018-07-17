@@ -20,15 +20,22 @@ tf.flags.DEFINE_string("negative_data_file", r"C:\Users\mural\Downloads\DeepLear
 
 # Model Hyperparameters
 tf.flags.DEFINE_integer("embedding_dim", 128, "Dimensionality of character embedding (default: 128)")
+#changed filter size from 3 4 5 to 1 2 3
 tf.flags.DEFINE_string("filter_sizes", "1,2,3", "Comma-separated filter sizes (default: '3,4,5')")
+#num of filters from 128 to 32
 tf.flags.DEFINE_integer("num_filters", 32, "Number of filters per filter size (default: 128)")
+#probability from 0.5 to 0.7
 tf.flags.DEFINE_float("dropout_keep_prob", 0.7, "Dropout keep probability (default: 0.5)")
 tf.flags.DEFINE_float("l2_reg_lambda", 0.0, "L2 regularization lambda (default: 0.0)")
 
 # Training parameters
+#batch size from 50 to 3
 tf.flags.DEFINE_integer("batch_size", 3, "Batch Size (default: 64)")
+#number of epochs from 100 to 10
 tf.flags.DEFINE_integer("num_epochs", 10, "Number of training epochs (default: 200)")
+#evaluate_every from 100 to 5
 tf.flags.DEFINE_integer("evaluate_every", 5, "Evaluate model on dev set after this many steps (default: 100)")
+#checkpoint_every from 50 to 4
 tf.flags.DEFINE_integer("checkpoint_every", 4, "Save model after this many steps (default: 100)")
 tf.flags.DEFINE_integer("num_checkpoints", 3, "Number of checkpoints to store (default: 5)")
 # Misc Parameters
@@ -91,6 +98,7 @@ with tf.Graph().as_default():
 
         # Define Training procedure
         global_step = tf.Variable(0, name="global_step", trainable=False)
+        #used 4 different optimizers
         #optimizer = tf.train.GradientDescentOptimizer(1e-3)
         # optimizer = tf.train.AdamOptimizer(1e-3)
         #optimizer = tf.train.AdagradOptimizer(1e-3)
